@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Console\Commands;
-
+use App\Services\PesquisaPreco\Entities\Parametro;
+use App\Services\PesquisaPreco\Endpoints\Parametros;
 use App\Services\PesquisaPreco;
 use Http;
 use Illuminate\Console\Command;
@@ -28,12 +29,19 @@ class Playground extends Command
     public function handle()
     {
         $service = new PesquisaPreco() ;
-        $return = $service
+        $json = $service
         ->parametros()
         ->get();
         // $this->info($return->body());
-    ds($return->json());
+        // $json = $return->json();
+        /** @var Parametro $parametro */
+        foreach ($json as $parametro) {
+            ds($parametro->nomeFornecedor);
+        }
+
+
 
         return Command::SUCCESS;
     }
 }
+// 30:21

@@ -2,7 +2,7 @@
 
 namespace App\Services\PesquisaPreco\Endpoints;
 
-trait Catmat
+trait HasParametros
 {
     public function parametros(){
         return new Parametros();

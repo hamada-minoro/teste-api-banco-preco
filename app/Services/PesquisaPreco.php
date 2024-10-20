@@ -2,15 +2,22 @@
 
 namespace App\Services;
 use Illuminate\Support\Facades\Http;
-use App\Services\PesquisaPreco\Endpoints\Catmat;
+use App\Services\PesquisaPreco\Endpoints\HasParametros;
+
+
+/**
+ * API de Pesquisa de Preços
+ * https://documenter.getpostman.com/view/13166820/2sA3XJjPpR#intro
+ * https://dadosabertos.compras.gov.br/swagger-ui/index.html#/
+ */
 
 class PesquisaPreco
 {
-    use Catmat;
+    use HasParametros;
     public $api;
     public function __construct()
     {
-        $this->api = Http::timeout(120)->baseUrl('https://dadosabertos.compras.gov.br/modulo-pesquisa-preco/1_consultarMaterial?');
+        $this->api = Http::timeout(180)->baseUrl('https://dadosabertos.compras.gov.br/modulo-pesquisa-preco');
     }
 }
 
